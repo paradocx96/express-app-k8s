@@ -25,7 +25,7 @@ spec:
         app: express-app
     spec:
       containers:
-      - image: paradocx96/express-app-k8s:49be39c5f8da859ff68553b7e67d0700ad98b4a1
+      - image: paradocx96/express-app-k8s:{{tag}}
         imagePullPolicy: IfNotPresent
         name: express-app-k8s
         resources: {}

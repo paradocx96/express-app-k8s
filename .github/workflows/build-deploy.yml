@@ -27,9 +27,13 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/express-app-k8s:${{ github.sha }}
-    - uses: actions-hub/kubectl@master
+    
+    - name: Update K8s Files
+      run: sed -i.bak 's/{{tag}}/${{ github.sha }}/g' k8s/deploy.yaml  && rm k8s/*.bak
+
+    - name: Deploy in K8s
+      uses: actions-hub/kubectl@master
       env:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
       with:
-        args: get namespaces
-    
+        args: apply -f ./k8s
