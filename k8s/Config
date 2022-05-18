@@ -1,0 +1,18 @@
+apiVersion: v1
+clusters:
+- cluster:
+    server:  <insert-data-2>
+    insecure-skip-tls-verify: true
+  name: katakoda-cluster
+contexts:
+- context:
+    cluster: katakoda-cluster
+    user: katakoda-cluster
+  name: katakoda-cluster
+current-context: katakoda-cluster
+kind: Config
+preferences: {}
+users:
+- name: katakoda-cluster
+  user:
+    token:  <insert-data-3>
